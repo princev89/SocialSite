@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="offset-sm-2 col-sm-8">
+
+            <div class="card text-blank border-0">
+                <div class="card-body">
+                    <div class="card-tittle text-center">
+                        <h5>Sign up for free</h5>
+                    </div>
+
+                    <div class="card-text">
+                        <form [formGroup]="myform" (ngSubmit)="onSubmit(myform)">
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" placeholder="First Name" [formControl]="myform.controls['firstName']">
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Last Name" [formControl]="myform.controls['lastName']">
+                                </div>
+                            </div>
+                            <div class=" alert alert-danger">
+                                First and Last name are required
+                            </div>
+                            <div class="form-group ">
+                                <input type="email " placeholder="Enter Your email " class="form-control " [formControl]="myform.controls['email']">
+                                <small class="form-text text-muted ">We'll never share your email with anyone else</small>
+                            </div>
+
+                            <div class="alert alert-danger ">
+                                Email is required
+                            </div>
+
+                            <div class="form-group ">
+                                <input type="password " class="form-control " placeholder="Password " [formControl]="myform.controls['password']">
+                            </div>
+                            <div class="form-group ">
+                                <input type="password " class="form-control " placeholder="Confirm Password " [formControl]="myform.controls['confirmPassword']">
+                            </div>
+
+                            <div class="alert alert-danger ">
+                                Password should be atleast 8 characters long
+                            </div>
+                            <button type="submit " class="btn btn-block btn-warning ">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
