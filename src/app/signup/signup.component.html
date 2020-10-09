@@ -19,7 +19,7 @@
                                     <input type="text" class="form-control" placeholder="Last Name" [formControl]="myform.controls['lastName']">
                                 </div>
                             </div>
-                            <div class=" alert alert-danger">
+                            <div class=" alert alert-danger" *ngIf="(!myform.controls['firstName'].valid || !myform.controls['lastName'].valid) && (myform.controls['firstName'].touched || myform.controls['lastName'].touched)">
                                 First and Last name are required
                             </div>
                             <div class="form-group ">
@@ -27,7 +27,7 @@
                                 <small class="form-text text-muted ">We'll never share your email with anyone else</small>
                             </div>
 
-                            <div class="alert alert-danger ">
+                            <div class="alert alert-danger " *ngIf="!myform.controls['email'].valid && myform.controls['email'].touched">
                                 Email is required
                             </div>
 
@@ -38,10 +38,10 @@
                                 <input type="password " class="form-control " placeholder="Confirm Password " [formControl]="myform.controls['confirmPassword']">
                             </div>
 
-                            <div class="alert alert-danger ">
+                            <div class="alert alert-danger" *ngIf="!myform.controls['password'].valid && myform.controls['password'].touched">
                                 Password should be atleast 8 characters long
                             </div>
-                            <button type="submit " class="btn btn-block btn-warning ">Submit</button>
+                            <button type="submit " class="btn btn-block btn-warning " [disabled]="!myform.valid">Submit</button> {{myform.controls['confirmPassword'].errors | json}}
                         </form>
                     </div>
                 </div>
