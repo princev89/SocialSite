@@ -10,6 +10,10 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CapitalizePipe } from './capitalize.pipe';
+import { AppRoutingModule } from './app-routing.module';
+import { MenuComponent } from './menu/menu.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MyblogsComponent } from './myblogs/myblogs.component';
 
 
 let config = {
@@ -32,12 +36,16 @@ firebase.initializeApp(config);
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    MenuComponent,
+    ProfileComponent,
+    MyblogsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
