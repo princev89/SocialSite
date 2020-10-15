@@ -1,5 +1,9 @@
+import { ASTWithName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl,  Validator, Validators } from '@angular/forms';
+
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-signup',
@@ -9,6 +13,9 @@ import { FormBuilder, FormGroup, FormControl,  Validator, Validators } from '@an
 export class SignupComponent implements OnInit {
 
   myform: FormGroup;
+  message: string = "";
+  userError: any;
+
   constructor(public fb: FormBuilder) {
     this.myform = this.fb.group({
       firstName : ['', [Validators.required]],
@@ -35,9 +42,24 @@ export class SignupComponent implements OnInit {
       }
     }
   }
+
   onSubmit(signupform){
-    console.log(signupform);
+    let email: string = signupform.value.email;
+    let password: string = signupform.value.password;
+    let firstName: string = signupform.value.firstName;
+    let lastName: string = signupform.value.lastName;
+
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      this.message = "You have been signed up successfuly. Please login."
+    }).catch((error) =>{
+      console.log(error);
+      this.userError = error;
+    })
   }
+
+
 
   ngOnInit(): void {
   }
