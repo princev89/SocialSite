@@ -11,6 +11,24 @@
             <li class="nav-item" routerLinkActive="active" data-toggler="collpase" data-target=".navbar-collapse" *ngIf="!loggedIn">
                 <a class="nav-link" routerLink="/home">Home</a>
             </li>
+            <li class="nav-item" routerLinkActive="active" data-toggler="collpase" data-target=".navbar-collapse" *ngIf="loggedIn">
+                <a class="nav-link" routerLink="/myblogs">Home</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item right" *ngIf="!loggedIn" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse">
+                <button class="btn btn-outline-light px-5" routerLink="/login">
+                    Login
+                </button>
+            </li>
+
+            <li class="nav-item right" *ngIf="loggedIn">
+                <a class="nav-link" [routerLink]="'/profile/' +  user.uid">My Profile</a>
+            </li>
+            <li class="nav-item right" *ngIf="loggedIn">
+                <a class="nav-link" routerLink="/" (click)="logout()">Log Out</a>
+            </li>
         </ul>
     </div>
 </div>

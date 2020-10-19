@@ -14,8 +14,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MyblogsComponent } from './myblogs/myblogs.component';
+import { CreateComponent } from './create/create.component';
 
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
+ 
+import {HttpClientModule} from '@angular/common/http';
+import { PostComponent } from './post/post.component';
+import { ViewComponent } from './view/view.component';
+import { CommentsComponent } from './comments/comments.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 let config = {
   apiKey: "AIzaSyAUJChLVrkhQMTVfHSmH0DcOVC63IDwgHQ",
   authDomain: "scribe-66e3b.firebaseapp.com",
@@ -39,13 +46,20 @@ firebase.initializeApp(config);
     CapitalizePipe,
     MenuComponent,
     ProfileComponent,
-    MyblogsComponent
+    MyblogsComponent,
+    CreateComponent,
+    PostComponent,
+    ViewComponent,
+    CommentsComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
